@@ -1,6 +1,5 @@
 package myspringboot;
 
-import java.nio.charset.Charset;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +8,6 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
@@ -41,11 +39,5 @@ public class App implements EmbeddedServletContainerCustomizer{
 		
 		HttpMessageConverter<?> converter = fastConverter;
 		return new HttpMessageConverters(converter);
-	}
-	
-	@Bean
-	public HttpMessageConverter<String> responseBodyConverter() {
-	    StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
-	    return converter;
 	}
 }
